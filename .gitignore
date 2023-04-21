@@ -1,0 +1,9 @@
+vendor/
+.vscode/
+
+# Ignore .env file
+.env
+
+# Ignore all files in the storage folder, but not the folder itself
+/storage/data/*
+/storage/views/*
