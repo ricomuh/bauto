@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Database\Migrations;
+
+use Bago\Database\Migrator;
+use Bago\Database\Column;
+
+class {{name}} extends Migrator
+{
+    public function up()
+    {
+        $this->table('{{table}}')->create(function (Column $column) {
+            {{columns}}
+        });
+    }
+}

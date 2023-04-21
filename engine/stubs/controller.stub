@@ -1,0 +1,9 @@
+<?php
+
+namespace App\Controllers;
+
+use Bago\Http\Controller;
+
+class {{controller}}Controller extends Controller
+{
+}
