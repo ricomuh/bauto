@@ -8,6 +8,9 @@ class ViewResponse
 
     protected $view;
     protected $data;
+    protected $content;
+    protected $sections = [];
+    protected $currentSection;
 
     public function __construct($view, $data = [])
     {
@@ -26,13 +29,74 @@ class ViewResponse
         ob_start();
         extract($this->data);
         require $view;
-        $content = ob_get_clean();
+        $this->content = ob_get_clean();
 
-        return $content;
+        return $this->content;
     }
 
     public function __toString()
     {
         return $this->render();
+    }
+
+    public function setSections($sections)
+    {
+        $this->sections = $sections;
+    }
+
+    public function section($name, $content = null)
+    {
+        if (is_null($content)) {
+            ob_start();
+            $this->currentSection = $name;
+        } else {
+            $this->sections[$name] = $content;
+        }
+    }
+
+    public function endSection()
+    {
+        $this->sections[$this->currentSection] = ob_get_clean();
+    }
+
+    public function hasSection($name)
+    {
+        return isset($this->sections[$name]);
+    }
+
+    public function push($name, $content = null)
+    {
+        if (is_null($content)) {
+            ob_start();
+            $this->currentSection = $name;
+        } else {
+            $this->sections[$name] .= $content;
+        }
+    }
+
+    public function endPush()
+    {
+        if (!$this->hasSection($this->currentSection)) {
+            $this->sections[$this->currentSection] = '';
+        }
+        $this->sections[$this->currentSection] .= ob_get_clean();
+    }
+
+    public function show($name)
+    {
+        echo $this->sections[$name];
+    }
+
+    public function extend($view)
+    {
+        $view = new ViewResponse($view);
+        $view->setSections($this->sections);
+
+        return $view;
+    }
+
+    public function yield($name, $default = '')
+    {
+        echo $this->sections[$name] ?? $default;
     }
 }

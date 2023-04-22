@@ -1,6 +1,5 @@
-<h1>
-    Test Broo
-</h1>
+<?= $this->section('title', 'Test') ?>
+<?= $this->section('content') ?>
 <article>
     <?php foreach ($filtered as $student) : ?>
         <h2>
@@ -11,4 +10,14 @@
         </p>
     <?php endforeach; ?>
 </article>
-<?= request()->baseURL() ?>
+<?= $this->endSection() ?>
+
+<?= $this->push('scripts') ?>
+<h2>Script 1</h2>
+<?= $this->endPush() ?>
+
+<?= $this->push('scripts') ?>
+<h2>Script 2</h2>
+<?= $this->endPush() ?>
+
+<?= $this->extend('layout') ?>
