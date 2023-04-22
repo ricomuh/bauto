@@ -11,16 +11,32 @@ class RouterKernel
     public $route;
     public $request;
 
+    /**
+     * RouterKernel constructor
+     * 
+     * @return void
+     */
     public function __construct()
     {
         $this->route = new Route();
         $this->request = new Request();
     }
 
+    /**
+     * Application routes
+     * 
+     * @param Route $route
+     * @return void
+     */
     public function application(Route $route)
     {
     }
 
+    /**
+     * Handle the request
+     * 
+     * @return void
+     */
     public function handle()
     {
         $this->application($this->route);
