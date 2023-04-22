@@ -43,12 +43,11 @@ class HomeController extends Controller
 
     public function error()
     {
-        return abort(404);
+        return abort(403);
     }
 
-    public function test2($id = null)
+    public function test2()
     {
-        echo 'This is get method with id: ';
-        echo $id;
+        return redirect()->route('test');
     }
 }
