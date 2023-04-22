@@ -44,6 +44,7 @@ class RouterKernel
 
         foreach ($routes as $route) {
             if (count($route['path']) != count($this->request->path)) continue;
+            if ($route['type'] != $this->request->method()) continue;
 
             $matchedPath = 0;
             $params = [];
