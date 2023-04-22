@@ -80,3 +80,16 @@ if (!function_exists('json')) {
         return new Engine\Handler\Response\JsonResponse($data);
     }
 }
+
+if (!function_exists('url')) {
+    /**
+     * Create a relative url.
+     * 
+     * @param string $path
+     * @return string
+     */
+    function url($path = '')
+    {
+        return request()->baseURL() . $path;
+    }
+}
