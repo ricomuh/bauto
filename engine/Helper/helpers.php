@@ -93,3 +93,49 @@ if (!function_exists('url')) {
         return request()->baseURL() . $path;
     }
 }
+
+if (!function_exists('route')) {
+    /**
+     * Create a relative url to the given route.
+     * 
+     * @param string $route
+     * @param array $params
+     * @return string
+     */
+    function route($route, $params = [])
+    {
+        $url = url($route);
+
+        if (!empty($params)) {
+            $url .= '?' . http_build_query($params);
+        }
+
+        return $url;
+    }
+}
+
+if (!function_exists('google_fonts')) {
+    /**
+     * Create a new google fonts instance.
+     * 
+     * @param array $fonts
+     * @return GoogleFonts
+     */
+    function google_fonts($fonts = [])
+    {
+        return new Engine\Helper\GoogleFonts($fonts);
+    }
+}
+
+if (!function_exists('asset')) {
+    /**
+     * Create a relative url to the public folder.
+     * 
+     * @param string $path
+     * @return string
+     */
+    function asset($path = '')
+    {
+        return url($path);
+    }
+}

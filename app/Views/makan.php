@@ -1,23 +1,17 @@
-<?= $this->section('title', 'Test') ?>
+<?= $this->section('title', 'Makanan') ?>
 <?= $this->section('content') ?>
-<article>
-    <?php foreach ($filtered as $student) : ?>
-        <h2>
-            <?= $student['name'] ?>
-        </h2>
-        <p>
-            <?= $student['age'] ?>
-        </p>
-    <?php endforeach; ?>
-</article>
+<h2>Daftar Makanan</h2>
+<ul>
+    <li>Nasi Goreng</li>
+    <li>Nasi Uduk</li>
+    <li>Nasi Padang</li>
+    <li>Nasi Kuning</li>
+</ul>
 <?= $this->endSection() ?>
-
 <?= $this->push('scripts') ?>
-<h2>Script 1</h2>
-<?= $this->endPush() ?>
-
-<?= $this->push('scripts') ?>
-<h2>Script 2</h2>
+<script>
+    console.log('Ini adalah script untuk halaman makanan');
+</script>
 <?= $this->endPush() ?>
 
 <?= $this->extend('layout') ?>

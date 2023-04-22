@@ -82,11 +82,6 @@ class ViewResponse
         $this->sections[$this->currentSection] .= ob_get_clean();
     }
 
-    public function show($name)
-    {
-        echo $this->sections[$name];
-    }
-
     public function extend($view)
     {
         $view = new ViewResponse($view);
