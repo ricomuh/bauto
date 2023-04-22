@@ -26,73 +26,46 @@ class RouterKernel
         $this->application($this->route);
         $routes = $this->route->getRoutes();
 
-        $this->checkForControllerAndMethod($routes, function ($route, $params) {
-            $controller = new $route['controller']();
-            $method = $route['method'];
-            // $controller->$method(...$params);
-            $response = $controller->$method(...$params);
-
-            if (is_string($response)) {
-                echo $response;
-            } else {
-                echo $response;
-            }
-        });
-
-        // echo json_encode($this->request->url());
-        // echo json_encode($routes);
-
-        // foreach ($routes as $route) {
-        //     if ($route['uri'] == $this->request->url() && $route['type'] == $this->request->method()) {
-        //         $controller = new $route['controller']();
-
-        //         $params = [];
-        //         foreach ($route['params'] as $param) {
-        //             $params[] = $this->request->get($param);
-        //         }
-
-        //         $method = $route['method'];
-        //         $controller->$method(...$params);
-
-        //         // echo "Controller: {$route['controller']} <br> Method: {$route['method']}";
-        //         // echo $this->request->url();
-        //         // $method = $route['method'];
-        //         // $controller->$method();
-        //     }
-        // }
-    }
-
-    public function checkForControllerAndMethod(array $routes, callable $callback)
-    {
-        $path = $this->request->path; // ['test', 'test2', 'test3']
-        $method = $this->request->method(); //
-
         foreach ($routes as $route) {
-            $routePath = $route['path'];
-            $routeMethod = $route['type'];
+            if (count($route['path']) != count($this->request->path)) continue;
 
-            $match = true;
-            $matchedParams = [];
-            // check if path and method are the same, and ignore params
-            if (count($path) == count($routePath) && $method == $routeMethod) {
-                foreach ($path as $key => $value) {
-                    if ($value != $routePath[$key]) {
-                        if (strpos($routePath[$key], '{') !== false) {
-                            $matchedParams[] = $value;
-                        } else {
-                            $match = false;
-                        }
-                    }
+            $matchedPath = 0;
+            $params = [];
+
+            foreach ($route['path'] as $key => $path) {
+                if ($path == $this->request->path[$key]) {
+                    $matchedPath++;
+                } else if (preg_match('/^:/', $path)) {
+                    $params[] = [
+                        'index' => $key,
+                        'name' => preg_replace('/^:/', '', $path),
+                    ];
+                    $matchedPath++;
                 }
-            } else {
-                $match = false;
             }
-            if ($match) {
 
-                $callback($route, $matchedParams);
+            if ($matchedPath == count($route['path'])) {
+                // echo 'matched';
+                $controller = new $route['controller']();
 
-                break;
+                $paramsValues = [];
+                foreach ($params as $param) {
+                    $paramsValues[] = $this->request->path[$param['index']];
+                }
+
+                $method = $route['method'];
+                $response = $controller->$method(...$paramsValues);
+                if (is_string($response)) {
+                    echo $response;
+                } else if (is_array($response)) {
+                    echo json($response);
+                } else if (is_object($response)) {
+                    echo $response->render();
+                }
+                return;
             }
         }
+
+        echo abort(404);
     }
 }
