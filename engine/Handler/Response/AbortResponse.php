@@ -9,12 +9,24 @@ class AbortResponse
 
     protected $view = 'error';
 
+    /**
+     * AbortResponse constructor.
+     * 
+     * @param int $code
+     * @param null $message
+     */
     public function __construct($code = 404, $message = null)
     {
         $this->code = $code;
         $this->message = $message ?? $this->getDefaultMessage($code);
     }
 
+    /**
+     * Get default message from code
+     * 
+     * @param int $code
+     * @return string
+     */
     public function getDefaultMessage(int $code)
     {
         $messages = [
@@ -34,6 +46,11 @@ class AbortResponse
         return $messages[$code] ?? 'Unknown error';
     }
 
+    /**
+     * Render abort response
+     * 
+     * @return string
+     */
     public function render()
     {
         http_response_code($this->code);
@@ -51,6 +68,11 @@ class AbortResponse
         ]);
     }
 
+    /**
+     * Convert to string
+     * 
+     * @return string
+     */
     public function __toString()
     {
         return $this->render();
