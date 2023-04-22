@@ -42,7 +42,7 @@ class AbortResponse
             return json([
                 'code' => $this->code,
                 'message' => $this->message,
-            ]);
+            ], $this->code);
         }
 
         return view($this->view, [

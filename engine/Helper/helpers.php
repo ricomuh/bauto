@@ -75,9 +75,9 @@ if (!function_exists('json')) {
      * @param array $data
      * @return JsonResponse
      */
-    function json($data = [])
+    function json($data = [], $status = 200)
     {
-        return new Engine\Handler\Response\JsonResponse($data);
+        return new Engine\Handler\Response\JsonResponse($data, $status);
     }
 }
 
