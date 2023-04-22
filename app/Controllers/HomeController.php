@@ -41,6 +41,11 @@ class HomeController extends Controller
         return json($data, 200);
     }
 
+    public function error()
+    {
+        return abort(404);
+    }
+
     public function test2($id = null)
     {
         echo 'This is get method with id: ';

@@ -81,6 +81,32 @@ if (!function_exists('json')) {
     }
 }
 
+if (!function_exists('redirect')) {
+    /**
+     * Create a new redirect response instance.
+     * 
+     * @param string $url
+     * @return RedirectResponse
+     */
+    function redirect($url = '')
+    {
+        return new Engine\Handler\Response\RedirectResponse($url);
+    }
+}
+
+if (!function_exists('abort')) {
+    /**
+     * Create a new abort response instance.
+     * 
+     * @param int $code
+     * @return AbortResponse
+     */
+    function abort($code = 404, $message = null)
+    {
+        return new Engine\Handler\Response\AbortResponse($code, $message);
+    }
+}
+
 if (!function_exists('url')) {
     /**
      * Create a relative url.

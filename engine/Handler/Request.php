@@ -33,6 +33,25 @@ class Request
         }
     }
 
+    public function accept($type)
+    {
+        $accept = $_SERVER['HTTP_ACCEPT'] ?? null;
+
+        if ($accept) {
+            $accept = explode(',', $accept);
+            $accept = array_map('trim', $accept);
+
+            return in_array($type, $accept);
+        }
+
+        return false;
+    }
+
+    public function acceptJSON()
+    {
+        return $this->accept('application/json');
+    }
+
     public function getBaseURL()
     {
         $baseURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
