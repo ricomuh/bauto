@@ -46,6 +46,14 @@ class Cache
      */
     protected $cacheExpire;
 
+    /**
+     * Set cache
+     * 
+     * @param string $key
+     * @param mixed $value
+     * @param int $expire
+     * @return void
+     */
     public function set($key, $value, $expire = 3600)
     {
         $this->cacheFile = $key . $this->cacheExt;
@@ -64,6 +72,12 @@ class Cache
         file_put_contents($this->cachePath, $this->cacheContent);
     }
 
+    /**
+     * Get cache
+     * 
+     * @param string $key
+     * @return mixed
+     */
     public function get($key)
     {
         $this->cacheFile = $key . $this->cacheExt;
@@ -83,6 +97,12 @@ class Cache
         return $this->cacheContent['value'];
     }
 
+    /**
+     * Delete cache
+     * 
+     * @param string $key
+     * @return void
+     */
     public function delete($key)
     {
         $this->cacheFile = $key . $this->cacheExt;
@@ -93,6 +113,12 @@ class Cache
         }
     }
 
+    /**
+     * Check if cache exists
+     * 
+     * @param string $key
+     * @return bool
+     */
     public function has($key)
     {
         $this->cacheFile = $key . $this->cacheExt;
@@ -105,6 +131,14 @@ class Cache
         return false;
     }
 
+    /**
+     * Remember cache
+     * 
+     * @param string $key
+     * @param int $expire
+     * @param callable $callback
+     * @return mixed
+     */
     public function remember($key, $expire, $callback)
     {
         if ($this->has($key)) {
@@ -116,6 +150,11 @@ class Cache
         return $this->get($key);
     }
 
+    /**
+     * Clear cache
+     * 
+     * @return void
+     */
     public function clear()
     {
         $files = glob($this->cacheDir . '*' . $this->cacheExt);

@@ -25,10 +25,13 @@ class RedirectResponse
      * 
      * @param string $route
      * @param array $params
+     * @return RedirectResponse
      */
     public function route($route, $params = [])
     {
         $this->url = route($route, $params);
+
+        return $this;
     }
 
     /**
