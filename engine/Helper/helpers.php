@@ -204,3 +204,18 @@ if (!function_exists('env')) {
         return $value;
     }
 }
+
+if (!function_exists('cache')) {
+    /**
+     * Create a new cache instance.
+     * 
+     * @param string $key
+     * @param mixed $value
+     * @param int $minutes
+     * @return Cache
+     */
+    function cache()
+    {
+        return new Engine\Helper\Cache();
+    }
+}

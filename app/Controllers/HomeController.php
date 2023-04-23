@@ -60,4 +60,14 @@ class HomeController extends Controller
     {
         return redirect()->route('test');
     }
+
+    public function test4()
+    {
+        // $data = cache()->remember('test', 60, function () {
+        //     return 'test';
+        // });
+        $data = cache()->get('test');
+
+        return json(['message' => $data]);
+    }
 }
