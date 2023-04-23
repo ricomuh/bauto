@@ -1,17 +1,18 @@
-<?= $this->extend('layout') ?>
+<?= $e->extend('layout') ?>
 
-<?= $this->section('title', 'Makanan') ?>
-<?= $this->section('content') ?>
+<?= $e->section('title', 'Makanan') ?>
+<?= $e->section('content') ?>
 <h2>Daftar Makanan</h2>
 <ul>
     <li>Nasi Goreng</li>
     <li>Nasi Uduk</li>
-    <li>Nasi Padang</li>
+    <li>Nasi P
+        adang</li>
     <li>Nasi Kuning</li>
 </ul>
-<?= $this->endSection() ?>
-<?= $this->push('scripts') ?>
+<?= $e->endSection() ?>
+<?= $e->push('scripts') ?>
 <script>
     console.log('Ini adalah script untuk halaman makanan');
 </script>
-<?= $this->endPush() ?>
+<?= $e->endPush() ?>
