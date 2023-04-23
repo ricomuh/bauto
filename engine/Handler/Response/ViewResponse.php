@@ -12,6 +12,7 @@ class ViewResponse
     protected $content;
     protected $sections = [];
     protected $currentSection;
+    protected $extends;
 
     /**
      * ViewResponse constructor.
@@ -43,6 +44,11 @@ class ViewResponse
         extract($this->data);
         require $view;
         $this->content = ob_get_clean();
+
+        if ($this->extends) {
+            $this->extends->setSections($this->sections);
+            return $this->extends;
+        }
 
         return $this->content;
     }
@@ -138,15 +144,15 @@ class ViewResponse
      * Extend a view
      * 
      * @param string $view
-     * @return ViewResponse
+     * @return void
      */
     public function extend($view)
     {
-        $view = new ViewResponse($view);
-        $view->setSections($this->sections);
+        $extends = new ViewResponse($view);
 
-        return $view;
+        $this->extends = $extends;
     }
+
 
     /**
      * Include a view

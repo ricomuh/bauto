@@ -1,3 +1,5 @@
+<?= $this->extend('layout') ?>
+
 <?= $this->section('title', 'Makanan') ?>
 <?= $this->section('content') ?>
 <h2>Daftar Makanan</h2>
@@ -13,5 +15,3 @@
     console.log('Ini adalah script untuk halaman makanan');
 </script>
 <?= $this->endPush() ?>
-
-<?= $this->extend('layout') ?>
