@@ -8,7 +8,7 @@ class RedirectResponse
     /**
      * @var string
      */
-    protected $url;
+    public $url;
 
     /**
      * RedirectResponse constructor.
@@ -40,10 +40,5 @@ class RedirectResponse
     {
         header('Location: ' . $this->url);
         exit;
-    }
-
-    public function __toString()
-    {
-        return $this->render();
     }
 }

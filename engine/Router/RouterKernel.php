@@ -70,12 +70,16 @@ class RouterKernel
                     $paramsValues[] = $this->request->path[$param['index']];
                 }
 
+                $paramsValues[] = $this->request;
+
                 $method = $route['method'];
                 $response = $controller->$method(...$paramsValues);
                 if (is_string($response)) {
                     echo $response;
                 } else if (is_array($response)) {
                     echo json($response);
+                } else if ($response instanceof \Engine\Handler\Response\RedirectResponse) {
+                    header('Location: ' . $response->url);
                 } else if (is_object($response)) {
                     echo $response->render();
                 }

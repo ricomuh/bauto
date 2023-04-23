@@ -55,4 +55,9 @@ class HomeController extends Controller
     {
         return json(['message' => 'test3', 'id' => $id]);
     }
+
+    public function  test_redirect()
+    {
+        return redirect()->route('test');
+    }
 }
