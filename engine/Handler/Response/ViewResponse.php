@@ -42,6 +42,7 @@ class ViewResponse
 
         ob_start();
         extract($this->data);
+        $e = $this;
         require $view;
         $this->content = ob_get_clean();
 

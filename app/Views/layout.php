@@ -16,15 +16,15 @@
 
 <body>
     <header>
-        <h1><?= $this->yield('title', 'Aplikasi Rico') ?></h1>
+        <h1><?= $e->yield('title', 'Aplikasi Rico') ?></h1>
     </header>
     <main>
-        <?= $this->yield('content') ?>
+        <?= $e->yield('content') ?>
     </main>
     <footer>
         Copyrigth <?= date('Y') ?> - Aplikasi Rico
     </footer>
-    <?= $this->yield('scripts') ?>
+    <?= $e->yield('scripts') ?>
 </body>
 
 </html>
