@@ -47,7 +47,7 @@ class ViewResponse
 
         if ($this->extends) {
             $this->extends->setSections($this->sections);
-            return $this->extends;
+            echo $this->extends;
         }
 
         return $this->content;
