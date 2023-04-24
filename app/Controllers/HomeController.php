@@ -48,7 +48,7 @@ class HomeController extends Controller
 
     public function test2()
     {
-        return json(['message' => 'test2']);
+        return env('APP_NAME', 'default');
     }
 
     public function test3($id)
