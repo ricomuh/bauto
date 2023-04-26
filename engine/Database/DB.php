@@ -392,7 +392,7 @@ class DB
         // return $this;
 
         $this->setQuery();
-        return $this->query;
+        return $this->execute();
     }
 
     /**
@@ -414,7 +414,7 @@ class DB
         // return $this;
 
         $this->setQuery();
-        return $this->query;
+        return $this->execute();
     }
 
     /**
@@ -426,6 +426,6 @@ class DB
         // return $this;
 
         $this->setQuery();
-        return $this->query;
+        return $this->execute();
     }
 }
