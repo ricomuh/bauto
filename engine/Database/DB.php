@@ -24,21 +24,86 @@ class DB
     protected $method;
 
     /* SELECT METHOD */
+
+    /**
+     * Database select column.
+     * 
+     * @var array
+     */
     protected $select = [];
+
+    /**
+     * Database where clause.
+     * 
+     * @var array
+     */
     protected $where = [];
+
+    /**
+     * Database limit.
+     * 
+     * @var int
+     */
     protected $limit = 0;
+
+    /**
+     * Database offset.
+     * 
+     * @var int
+     */
     protected $offset = 0;
+
+    /**
+     * Database order by.
+     * 
+     * @var array
+     */
     protected $orderBy = [];
+
+    /**
+     * Database group by.
+     * 
+     * @var array
+     */
     protected $groupBy = [];
 
     /* INSERT METHOD */
+
+    /**
+     * Database insert column.
+     * 
+     * @var array
+     */
     protected $insert = [];
 
     /* UPDATE METHOD */
+
+    /**
+     * Database update column.
+     * 
+     * @var array
+     */
     protected $update = [];
 
+    /**
+     * Database query.
+     * 
+     * @var string
+     */
     protected $query;
+
+    /**
+     * Database result.
+     * 
+     * @var array
+     */
     protected $result;
+
+    /**
+     * Database data.
+     * 
+     * @var array
+     */
     protected $data = [];
 
     /**
@@ -49,27 +114,10 @@ class DB
      */
     public function __construct(string $table = '')
     {
-        // get the .env file
-        // $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
-        // $dotenv->load();
-
-        // // connect to database
-        // $this->db = new mysqli(
-        //     $_ENV['DB_HOST'],
-        //     $_ENV['DB_USER'],
-        //     $_ENV['DB_PASS'],
-        //     $_ENV['DB_NAME']
-        // );
-
         $this->db = $GLOBALS['db'];
 
         $this->table = $table;
     }
-
-    // public function __destruct()
-    // {
-    //     $this->db->close();
-    // }
 
     /**
      * merge array to string
