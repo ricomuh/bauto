@@ -2,42 +2,108 @@
 
 namespace Engine\Database;
 
+use Engine\Database\DB;
+
 class Model
 {
+    /**
+     * Database table name.
+     * 
+     * @var string
+     */
     protected $table;
 
-    public function __construct()
+    /**
+     * Database primary key.
+     * 
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    /**
+     * Get database table name.
+     * 
+     * @return string
+     */
+    public function getTableName()
     {
-        $this->table = $this->table ?? strtolower(str_replace('App\\Database\\Models\\', '', get_class($this)));
+        return $this->table ?? (string) str(basename(str_replace('\\', '/', get_class($this))))->snakeCase()->plural();
     }
 
-    public static function getTableName()
-    {
-        return strtolower(str_replace('App\\Database\\Models\\', '', get_called_class()));
-    }
-
+    /**
+     * Get all data from database table.
+     * 
+     * @return array
+     */
     public static function all()
     {
-        return DB::table(self::getTableName())->get();
+        return DB::table((new static)->getTableName())->all();
     }
 
-    public static function find($id)
+    /**
+     * Get data from database table by primary key.
+     * 
+     * @param string $key
+     * @return array
+     */
+    public static function find($key)
     {
-        return DB::table(self::getTableName())->find($id);
+        return DB::table((new static)->getTableName())->select()->where([(new static)->primaryKey => $key])->get(true);
     }
 
-    public static function create($data)
+    /**
+     * Get data from database table by where clause.
+     * 
+     * @param array $where
+     * @return array
+     */
+    public static function where(array $where)
     {
-        return DB::table(self::getTableName())->insert($data);
+        return DB::table((new static)->getTableName())->select()->where($where);
     }
 
-    public static function update($id, $data)
+    /**
+     * Insert data to database table.
+     * 
+     * @param array $data
+     * @return bool
+     */
+    public static function insert(array $data)
     {
-        return DB::table(self::getTableName())->where('id', $id)->update($data);
+        return DB::table((new static)->getTableName())->insert($data);
     }
 
-    public static function delete($id)
+    /**
+     * Update data from database table.
+     * 
+     * @param array $data
+     * @param array $where
+     * @return bool
+     */
+    public static function update(array $data, array $where)
     {
-        return DB::table(self::getTableName())->where('id', $id)->delete();
+        return DB::table((new static)->getTableName())->where($where)->update($data);
+    }
+
+    /**
+     * Delete data from database table.
+     * 
+     * @param array $where
+     * @return bool
+     */
+    public static function delete(array $where)
+    {
+        return DB::table((new static)->getTableName())->where($where)->delete();
+    }
+
+    /**
+     * Call static method.
+     * 
+     * @param string $method
+     * @param array $args
+     */
+    public static function __callStatic($method, $args)
+    {
+        return DB::table((new static)->getTableName())->$method(...$args);
     }
 }

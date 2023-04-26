@@ -4,8 +4,23 @@ namespace Engine\Database;
 
 class DB
 {
-    public static $db;
+    /**
+     * Database object.
+     * 
+     * @var \Engine\Database\Database
+     */
+    public $db;
+    /**
+     * Database table name.
+     * 
+     * @var string
+     */
     protected $table;
+    /**
+     * Database query method.
+     * 
+     * @var string
+     */
     protected $method;
 
     /* SELECT METHOD */
@@ -45,6 +60,8 @@ class DB
         //     $_ENV['DB_PASS'],
         //     $_ENV['DB_NAME']
         // );
+
+        $this->db = $GLOBALS['db'];
 
         $this->table = $table;
     }
@@ -168,52 +185,58 @@ class DB
     /**
      * Execute query
      * 
-     * @return bool
+     * @return Engine\Database\DatabaseResult
      */
     protected function execute()
     {
         $this->result = $this->db->query($this->query);
 
-        if ($this->db->affected_rows > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->result;
     }
 
+    /**
+     * Get data from database
+     * 
+     * @param bool $getOne
+     * @return array
+     */
     public function get($getOne = false)
     {
-        // if (!$this->execute()) {
-        //     return false;
-        // }
-
-        // $result = $this->result;
-
-        // if ($result->num_rows > 0) {
-        //     while ($row = $result->fetch_assoc()) {
-        //         $this->data[] = $row;
-        //     }
-        // }
-
-        // return $getOne ? $this->data : $this->data[0];
-
         $this->setQuery();
-        return $this->query;
+        if ($getOne) return $this->execute()->fetch();
+        return $this->execute()->fetchAll();
     }
 
+    /**
+     * Find data by id
+     * 
+     * @param int $id
+     * @return array
+     */
     public function find($id)
     {
         $this->query = "SELECT * FROM {$this->table} WHERE id = {$id}";
-        return $this->get();
+        return $this->get(true);
     }
 
+    /**
+     * Get all data from table
+     * 
+     * @return array
+     */
     public function all()
     {
         $this->query = "SELECT * FROM {$this->table}";
-        // return $this->get();
-        return $this->query;
+
+        return $this->execute()->fetchAll();
     }
 
+    /**
+     * Insert data to database
+     * 
+     * @param array $data
+     * @return Engine\Database\DatabaseResult
+     */
     public function select($select = [])
     {
         $this->method = 'select';
@@ -222,6 +245,8 @@ class DB
     }
 
     /**
+     * Set the where clause
+     * 
      * @param array $where
      * @return $this
      * 
@@ -241,6 +266,8 @@ class DB
     }
 
     /**
+     * Set the limit clause
+     * 
      * @param array $orderBy
      * @return $this
      * 
@@ -257,6 +284,8 @@ class DB
     }
 
     /**
+     * Set the offset clause
+     * 
      * @param array $orderBy
      * @return $this
      * 
@@ -273,6 +302,8 @@ class DB
     }
 
     /**
+     * Set the group by clause
+     * 
      * @return $this
      */
     public function first()
@@ -283,6 +314,8 @@ class DB
     }
 
     /**
+     * Set the group by clause
+     * 
      * @return $this
      */
     public function latest()
@@ -292,6 +325,11 @@ class DB
         return $this;
     }
 
+    /**
+     * Set the group by clause
+     * 
+     * @return $this
+     */
     public function oldest()
     {
         $this->method = 'select';
@@ -300,6 +338,8 @@ class DB
     }
 
     /**
+     * Set the order by clause
+     * 
      * @param array $orderBy
      * @return $this
      * 
@@ -316,6 +356,8 @@ class DB
     }
 
     /**
+     * Set the group by clause
+     * 
      * @param array $groupBy
      * @return $this
      * 
@@ -332,6 +374,8 @@ class DB
     }
 
     /**
+     * Insert data to database
+     * 
      * @param array $insert
      * @return $this
      * 
@@ -352,6 +396,8 @@ class DB
     }
 
     /**
+     * Update data to database
+     * 
      * @param array $update
      * @return $this
      * 

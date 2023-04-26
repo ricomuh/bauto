@@ -23,7 +23,7 @@ if (!function_exists('dd')) {
     function dd(...$args)
     {
         foreach ($args as $arg) {
-            var_dump($arg);
+            echo view('framework/dd', ['arg' => $arg]);
         }
         die();
     }

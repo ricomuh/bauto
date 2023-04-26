@@ -7,7 +7,7 @@ class AbortResponse
     protected $code;
     protected $message;
 
-    protected $view = 'error';
+    protected $view = 'framework/error';
 
     /**
      * AbortResponse constructor.

@@ -36,6 +36,7 @@ class HomeController extends Controller
             'nama' => 'Rizky',
             'umur' => 20,
             'base_url' => request()->baseURL(),
+            'table_name' => (new \App\Database\Models\Student)->getTableName(),
         ];
 
         return json($data, 200);
