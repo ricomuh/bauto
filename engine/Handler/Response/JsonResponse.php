@@ -2,6 +2,8 @@
 
 namespace Engine\Handler\Response;
 
+use Engine\Helper\Collection;
+
 class JsonResponse
 {
     protected $data;
@@ -28,6 +30,7 @@ class JsonResponse
     {
         header('Content-Type: application/json');
         http_response_code($this->status);
+        if ($this->data instanceof Collection) return (string) $this->data;
         return json_encode($this->data);
     }
 

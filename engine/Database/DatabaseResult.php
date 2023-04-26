@@ -2,6 +2,8 @@
 
 namespace Engine\Database;
 
+use Engine\Helper\Collection;
+
 class DatabaseResult
 {
     /**
@@ -26,9 +28,10 @@ class DatabaseResult
      * 
      * @return array
      */
-    public function fetchAll(): array
+    public function fetchAll(): Collection
     {
-        return $this->result->fetch_all(MYSQLI_ASSOC);
+        // return $this->result->fetch_all(MYSQLI_ASSOC);
+        return collect($this->result->fetch_all(MYSQLI_ASSOC));
     }
 
     /**
