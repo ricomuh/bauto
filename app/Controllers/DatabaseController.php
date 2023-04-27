@@ -12,7 +12,7 @@ class DatabaseController extends Controller
     public function index()
     {
         $posts = Post::all();
-
+        // dd($posts);
         return json($posts);
     }
 
@@ -21,5 +21,14 @@ class DatabaseController extends Controller
         $data = Post::find($slug);
 
         return json($data);
+    }
+
+    /**
+     * @param Post $post
+     * @return void
+     */
+    public function read2(Post $post)
+    {
+        return json($post);
     }
 }

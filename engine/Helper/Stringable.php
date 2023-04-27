@@ -155,4 +155,9 @@ class Stringable
 
         return $this;
     }
+
+    public function contains($needle)
+    {
+        return Str::contains($this->string, $needle);
+    }
 }

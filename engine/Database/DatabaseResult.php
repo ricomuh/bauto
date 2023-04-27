@@ -26,22 +26,34 @@ class DatabaseResult
     /**
      * Fetch all rows from database result.
      * 
+     * @param string $model
      * @return array
      */
-    public function fetchAll(): Collection
+    public function fetchAll(string $model): Collection
     {
         // return $this->result->fetch_all(MYSQLI_ASSOC);
-        return collect($this->result->fetch_all(MYSQLI_ASSOC));
+        // return collect($this->result->fetch_all(MYSQLI_ASSOC));
+        $result = collect($this->result->fetch_all(MYSQLI_ASSOC));
+        // dd($result, $model);
+        if (!$model) return $result;
+        return $result->map(function ($item) use ($model) {
+            return new $model(true, $item, true);
+        });
     }
 
     /**
      * Fetch single row from database result.
      * 
-     * @return array
+     * 
      */
-    public function fetch(): array
+    public function fetch(string $model)
     {
-        return $this->result->fetch_assoc();
+        if ($this->result->num_rows > 0) {
+            $result = $this->result->fetch_assoc();
+            if (!$model) return $result;
+            return new $model(true, $result, true);
+        }
+        return [];
     }
 
     /**

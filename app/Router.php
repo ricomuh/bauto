@@ -27,6 +27,6 @@ class Router extends RouterKernel
 
         // $route->get('/test4', HomeController::class, 'test4')->name('test4');
         $route->get('/', DatabaseController::class, 'index')->name('index');
-        $route->get('/read/:slug', DatabaseController::class, 'read')->name('read');
+        $route->get('/read/:slug', DatabaseController::class, 'read2')->name('read');
     }
 }

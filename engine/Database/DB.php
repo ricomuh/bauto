@@ -107,6 +107,13 @@ class DB
     protected $data = [];
 
     /**
+     * Database model.
+     * 
+     * @var string
+     */
+    protected $model;
+
+    /**
      * Constructor
      * 
      * @param string $table
@@ -117,6 +124,19 @@ class DB
         $this->db = $GLOBALS['db'];
 
         $this->table = $table;
+    }
+
+    /**
+     * Set model to DatabaseResult.
+     * 
+     * @param string $model
+     * @return \Engine\Database\DB
+     */
+    public function setModel(string $model)
+    {
+        $this->model = $model;
+
+        return $this;
     }
 
     /**
@@ -246,13 +266,17 @@ class DB
      * Get data from database
      * 
      * @param bool $getOne
-     * @return array
+     * @return array|bool
      */
     public function get($getOne = false)
     {
+        $this->method = 'select';
         $this->setQuery();
-        if ($getOne) return $this->execute()->fetch();
-        return $this->execute()->fetchAll();
+        $result = $this->execute();
+        if ($getOne) return $result->fetch($this->model ?? null);
+        return $result->fetch_all($this->model ?? null);
+        // if ($getOne) return $this->execute()->fetch();
+        // return $this->execute()->fetchAll();
     }
 
     /**
@@ -276,7 +300,7 @@ class DB
     {
         $this->query = "SELECT * FROM {$this->table}";
 
-        return $this->execute()->fetchAll();
+        return $this->execute()->fetchAll($this->model ?? null);
     }
 
     /**

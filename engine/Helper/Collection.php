@@ -13,17 +13,18 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
      */
     public function __construct(array $items = [])
     {
-        $itemsToSet = [];
+        // $itemsToSet = [];
 
-        foreach ($items as $key => $value) {
-            if (is_array($value)) {
-                $itemsToSet[$key] = new static($value);
-            } else {
-                $itemsToSet[$key] = $value;
-            }
-        }
+        // foreach ($items as $key => $value) {
+        //     if (is_array($value)) {
+        //         $itemsToSet[$key] = new static($value);
+        //     } else {
+        //         $itemsToSet[$key] = $value;
+        //     }
+        // }
 
-        $this->items = $itemsToSet;
+        // $this->items = $itemsToSet;
+        $this->items = $items;
     }
 
     /**
