@@ -21,6 +21,13 @@ class Model
     protected $primaryKey = 'id';
 
     /**
+     * The hidden attributes.
+     * 
+     * @var array
+     */
+    protected $hidden = [];
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
@@ -40,7 +47,7 @@ class Model
      * 
      * @var bool
      */
-    public $exists = false;
+    protected $exists = false;
 
     /**
      * The model's attributes.
@@ -80,6 +87,16 @@ class Model
             // if (static::find($data[$this->primaryKey])) $this->exists = true;
             // else $this->fill($data);
         }
+    }
+
+    /**
+     * Check if model exists in database.
+     * 
+     * @return bool
+     */
+    public function isExists()
+    {
+        return $this->exists;
     }
 
     /**
