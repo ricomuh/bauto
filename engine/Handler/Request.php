@@ -261,4 +261,15 @@ class Request
 
         return $this->post;
     }
+
+    /**
+     * Get the request's POST parameters
+     * 
+     * @param string $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        return $this->$key ?? null;
+    }
 }

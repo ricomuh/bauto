@@ -248,13 +248,83 @@ class Model
     // }
 
     /**
-     * Call static method.
+     * Get model data as array.
      * 
-     * @param string $method
-     * @param array $args
+     * @return array
      */
-    public static function __callStatic($method, $args)
+    public function toArray()
     {
-        return DB::table((new static)->getTableName())->$method(...$args);
+        $data = [];
+        foreach ($this->columns as $column) {
+            $data[$column] = $this->$column;
+        }
+        return $data;
+    }
+
+    /**
+     * Get model data as json.
+     * 
+     * @return string
+     */
+    public function toJson(): string
+    {
+        return (string) json($this->toArray());
+    }
+
+
+    /**
+     * Get model data as json.
+     * 
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->toJson();
+    }
+
+    /**
+     * Get attribute value.
+     * 
+     * @param string $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        if (method_exists($this, $name)) return $this->$name();
+
+        return $this->$name ?? null;
+    }
+
+    /**
+     * Set attribute value.
+     * 
+     * @param string $name
+     * @param mixed $value
+     */
+    public function __set($name, $value)
+    {
+        $this->$name = $value;
+        $this->columns[] = $name;
+    }
+
+    /**
+     * Check if attribute exists.
+     * 
+     * @param string $name
+     * @return bool
+     */
+    public function __isset($name)
+    {
+        return isset($this->$name);
+    }
+
+    /**
+     * Unset attribute.
+     * 
+     * @param string $name
+     */
+    public function __unset($name)
+    {
+        unset($this->$name);
     }
 }
