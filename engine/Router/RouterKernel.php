@@ -49,8 +49,6 @@ class RouterKernel
                 $paramsValues[] = $this->request->path[$param['index']];
             }
 
-            $paramsValues[] = $this->request;
-
             $this->runMethod($route['controller'], $route['method'], $paramsValues, $params);
         });
 
@@ -120,6 +118,17 @@ class RouterKernel
                     echo abort(404);
                     return;
                 }
+            } else if ($model == 'Engine\Handler\Request') {
+                $params[$key] = $this->request;
+            }
+
+            if ($param->isDefaultValueAvailable() && !isset($params[$key])) {
+                $params[$key] = $param->getDefaultValue();
+            }
+
+            if (!isset($params[$key])) {
+                echo abort(404);
+                return;
             }
         }
 

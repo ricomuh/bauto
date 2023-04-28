@@ -9,7 +9,7 @@ use Engine\Handler\Request;
 class PostController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $posts = Post::all();
         // dd($posts);
