@@ -95,7 +95,7 @@ class Database
      * Query the database.
      * 
      * @param string $query
-     * @return \Engine\Database\DatabaseResult
+     * @return \Engine\Database\DatabaseResult|bool
      */
     public function query(string $query)
     {
@@ -103,6 +103,10 @@ class Database
 
         if ($result === false) {
             die('Query failed: ' . $this->connection->error);
+        }
+
+        if ($result === true) {
+            return true;
         }
 
         return new DatabaseResult($result);

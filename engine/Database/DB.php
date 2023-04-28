@@ -253,7 +253,7 @@ class DB
     /**
      * Execute query
      * 
-     * @return Engine\Database\DatabaseResult
+     * @return Engine\Database\DatabaseResult|bool
      */
     protected function execute()
     {

@@ -7,6 +7,7 @@ use Engine\Router\RouterKernel;
 use Engine\Router\Route;
 
 use App\Controllers\HomeController;
+use App\Controllers\PostController;
 
 class Router extends RouterKernel
 {
@@ -28,5 +29,13 @@ class Router extends RouterKernel
         // $route->get('/test4', HomeController::class, 'test4')->name('test4');
         $route->get('/', DatabaseController::class, 'index')->name('index');
         $route->get('/read/:slug', DatabaseController::class, 'read2')->name('read');
+
+        $route->get('/crud/post', PostController::class, 'index')->name('crud.post.index');
+        $route->get('/crud/post/create', PostController::class, 'create')->name('crud.post.create');
+        $route->post('/crud/post/store', PostController::class, 'store')->name('crud.post.store');
+        $route->get('/crud/post/:slug', PostController::class, 'show')->name('crud.post.show');
+        $route->get('/crud/post/:slug/edit', PostController::class, 'edit')->name('crud.post.edit');
+        $route->post('/crud/post/:slug/update', PostController::class, 'update')->name('crud.post.update');
+        $route->post('/crud/post/:slug/destroy', PostController::class, 'destroy')->name('crud.post.destroy');
     }
 }
