@@ -80,6 +80,7 @@ class Model
                 foreach ($find->columns as $value) {
                     $this->$value = $find->$value;
                 }
+                $this->oldPrimaryKeyValue = $find->oldPrimaryKeyValue;
             } else {
                 $this->exists = false;
                 $this->fill($data);

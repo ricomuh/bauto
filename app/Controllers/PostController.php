@@ -9,11 +9,10 @@ use Engine\Handler\Request;
 class PostController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
         $posts = Post::all();
-        // dd($posts);
-        // return json($posts);
+
         return view('crud/post/index', compact('posts'));
     }
 
@@ -45,7 +44,6 @@ class PostController extends Controller
 
     public function update(Post $post, Request $request)
     {
-        dd($request);
         $post->update([
             'title' => $request->title,
             'slug' => str($request->title)->slug(),

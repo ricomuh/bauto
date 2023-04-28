@@ -142,12 +142,18 @@ class DB
     /**
      * merge array to string
      */
-    protected function mergeArrayToString($array, $separator = ',')
+    protected function mergeArrayToString($array, $separator = ',', bool $useQuotes = false)
     {
         if (array_keys($array) !== range(0, count($array) - 1)) {
             $string = '';
             foreach ($array as $key => $value) {
-                $string .= "{$key} = {$value},";
+                // $string .= "{$key} = {$value},";
+                $string .= "{$key} = ";
+                if ($useQuotes) {
+                    $string .= "'{$value}',";
+                } else {
+                    $string .= "{$value},";
+                }
             }
             return rtrim($string, ',');
         }
@@ -192,7 +198,7 @@ class DB
 
     protected function getUpdateString()
     {
-        return $this->mergeArrayToString($this->update, ',');
+        return $this->mergeArrayToString($this->update, ',', true);
     }
 
     protected function setQuery()
@@ -231,7 +237,7 @@ class DB
 
                 break;
             case 'update':
-                $this->query = "UPDATE {$this->table} SET";
+                $this->query = "UPDATE {$this->table} SET ";
                 $this->query .= $this->getUpdateString();
                 $this->query .= " WHERE ";
                 $this->query .= $this->getWhereString();
@@ -487,6 +493,7 @@ class DB
 
         $this->setQuery();
         return $this->execute();
+        // return $this->query;
     }
 
     /**

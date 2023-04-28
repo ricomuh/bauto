@@ -26,7 +26,7 @@
                             <td>
                                 <a href="<?= route('crud/post/' . $post->slug) ?>" class="btn btn-info">Detail</a>
                                 <a href="<?= route('crud/post/' . $post->slug . '/edit') ?>" class="btn btn-warning">Edit</a>
-                                <form action="<?= route('crud/post/' . $post->slug) ?>" method="POST" style="display: inline-block">
+                                <form action="<?= route('crud/post/' . $post->slug . '/destroy') ?>" method="POST" style="display: inline-block">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-danger">Hapus</button>
                                 </form>
