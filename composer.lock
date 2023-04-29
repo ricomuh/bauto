@@ -274,12 +274,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ricomuh/bauto-framework.git",
-                "reference": "6b7d79070e84d347d4c094d7cdb334dbd61fe734"
+                "reference": "fb0e36cfbaca1ac052e348029a4f69d03b348f7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ricomuh/bauto-framework/zipball/6b7d79070e84d347d4c094d7cdb334dbd61fe734",
-                "reference": "6b7d79070e84d347d4c094d7cdb334dbd61fe734",
+                "url": "https://api.github.com/repos/ricomuh/bauto-framework/zipball/fb0e36cfbaca1ac052e348029a4f69d03b348f7b",
+                "reference": "fb0e36cfbaca1ac052e348029a4f69d03b348f7b",
                 "shasum": ""
             },
             "require": {
@@ -313,7 +313,7 @@
                 "issues": "https://github.com/ricomuh/bauto-framework/issues",
                 "source": "https://github.com/ricomuh/bauto-framework/tree/master"
             },
-            "time": "2023-04-29T13:25:33+00:00"
+            "time": "2023-04-29T17:29:11+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
