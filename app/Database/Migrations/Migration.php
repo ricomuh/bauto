@@ -9,7 +9,8 @@ class Migration extends Migrator
 {
     public function run()
     {
-        $this->table('users', function (Column $column) {
+        // Create users table
+        $this->table('users')->create(function (Column $column) {
             $column->id();
             $column->string('name');
             $column->string('email');

@@ -2,7 +2,7 @@
 
 namespace App\Database;
 
-use Engine\Database\Seeder;
+use Engine\Migration\Seeder;
 use App\Database\Models\User;
 
 class DatabaseSeeder extends Seeder
