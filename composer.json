@@ -2,6 +2,15 @@
   "name": "ricomuh/bauto",
   "description": "Bauto is a PHP framework for building web applications and APIs.",
   "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rico Muhammad",
+      "email": "rico@leolitgames.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "version": "0.1.0",
   "keywords": [
     "framework",
     "mvc",
