@@ -149,7 +149,8 @@ class DB
             foreach ($array as $key => $value) {
                 // $string .= "{$key} = {$value},";
                 $string .= "{$key} = ";
-                if ($useQuotes) {
+                if ($useQuotes && !is_numeric($value)) {
+                    $value = $this->db->escape($value);
                     $string .= "'{$value}',";
                 } else {
                     $string .= "{$value},";
@@ -177,6 +178,7 @@ class DB
     {
         $where = '';
         foreach ($this->where as $key => $value) {
+            $value = $this->db->escape($value);
             if (is_array($value)) {
                 $where .= implode(' ', $value) . ' AND ';
             } else {
