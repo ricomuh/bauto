@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1f8ea7ff74094f63ebfae14d207c547",
+    "content-hash": "7331ac03d8d80f98bc4d5379506a0063",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -142,6 +142,48 @@
                 }
             ],
             "time": "2023-02-25T19:38:58+00:00"
+        },
+        {
+            "name": "ricomuh/bauto-framework",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ricomuh/bauto-framework.git",
+                "reference": "282260c1e3f8b345e135d4d86cd01ef9387956fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ricomuh/bauto-framework/zipball/282260c1e3f8b345e135d4d86cd01ef9387956fd",
+                "reference": "282260c1e3f8b345e135d4d86cd01ef9387956fd",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "engine/Helper/helpers.php"
+                ],
+                "psr-4": {
+                    "Engine\\": "engine/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Rico Muhammad",
+                    "email": "rico@leolitgames.com"
+                }
+            ],
+            "description": "Bauto Framework",
+            "keywords": [
+                "bauto",
+                "framework"
+            ],
+            "support": {
+                "issues": "https://github.com/ricomuh/bauto-framework/issues",
+                "source": "https://github.com/ricomuh/bauto-framework/tree/master"
+            },
+            "time": "2023-04-29T02:14:02+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -479,7 +521,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ricomuh/bauto-framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

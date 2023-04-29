@@ -1,7 +1,0 @@
-<?php
-
-use App\Configs\Config;
-use Engine\Database\Database;
-
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../engine/Helper/helpers.php';

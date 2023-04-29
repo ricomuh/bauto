@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../engine/bootstrap.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 use App\Router;

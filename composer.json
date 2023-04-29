@@ -1,5 +1,5 @@
 {
-  "name": "ricom/bauto",
+  "name": "ricomuh/bauto",
   "description": "Bauto is a PHP framework for building web applications and APIs.",
   "keywords": [
     "framework",
@@ -8,11 +8,11 @@
   ],
   "autoload": {
     "psr-4": {
-      "Engine\\": "engine/",
       "App\\": "app/"
     }
   },
   "require": {
-    "vlucas/phpdotenv": "^5.5"
+    "vlucas/phpdotenv": "^5.5",
+    "ricomuh/bauto-framework": "dev-master"
   }
 }
