@@ -1,6 +1,7 @@
 {
   "name": "ricomuh/bauto",
   "description": "Bauto is a PHP framework for building web applications and APIs.",
+  "type": "project",
   "keywords": [
     "framework",
     "mvc",
