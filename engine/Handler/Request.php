@@ -8,13 +8,67 @@ class Request
 {
     use URLParser;
 
+    /**
+     * The request's URL
+     * 
+     * @var string
+     */
     protected $url;
+
+    /**
+     * The request's method
+     * 
+     * @var string
+     */
     protected $method;
+
+    /**
+     * The request's path
+     * 
+     * @var array
+     */
     public $path = [];
+
+    /**
+     * The request's base URL
+     * 
+     * @var string
+     */
     protected $baseURL = '';
 
+    /**
+     * The request's GET parameters
+     * 
+     * @var array
+     */
     protected $get = [];
+
+    /**
+     * The request's POST parameters
+     * 
+     * @var array
+     */
     protected $post = [];
+
+    /**
+     * The request's errors
+     * 
+     * @var array
+     */
+    public $errors = [];
+
+    /**
+     * The methods available for the request
+     * 
+     * @var array
+     */
+    protected $methods = [
+        'GET',
+        'POST',
+        'PUT',
+        'PATCH',
+        'DELETE'
+    ];
 
     /**
      * Request constructor
@@ -28,11 +82,35 @@ class Request
 
         $this->url = $this->sanitize($this->get('url') ?? '/');
         $this->path = $this->parsePath($this->url);
-        $this->method = $_SERVER['REQUEST_METHOD'];
+        $this->method = $this->getMethod();
         $this->baseURL = $this->getBaseURL();
 
         unset($this->get['url']);
 
+        $this->bindPost();
+    }
+
+    /**
+     * Get the request's method
+     * 
+     * @return string
+     */
+    protected function getMethod()
+    {
+        if (isset($this->post['_method']) && in_array($this->post['_method'], $this->methods)) {
+            unset($this->post['_method']);
+            return $this->post['_method'];
+        }
+        return $_SERVER['REQUEST_METHOD'];
+    }
+
+    /**
+     * Bind the POST parameters to the request
+     * 
+     * @return void
+     */
+    protected function bindPost()
+    {
         foreach ($this->post as $key => $value) {
             $this->$key = $value;
         }
@@ -271,5 +349,37 @@ class Request
     public function __get($key)
     {
         return $this->$key ?? null;
+    }
+
+    /**
+     * Get all the request's parameters
+     * 
+     * @return array
+     */
+    public function all()
+    {
+        return $this->post;
+    }
+
+    /**
+     * Get the request's IP address
+     * 
+     * @return string
+     */
+    public function ip()
+    {
+        return $_SERVER['REMOTE_ADDR'] ?? null;
+    }
+
+    public function validate($rules)
+    {
+        $validator = new Validator($this->all(), $rules);
+
+        if ($validator->fails()) {
+            $this->errors = $validator->errors();
+            return false;
+        }
+
+        return true;
     }
 }
