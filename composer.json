@@ -23,6 +23,6 @@
   },
   "require": {
     "vlucas/phpdotenv": "^5.5",
-    "ricomuh/bauto-framework": "dev-master"
+    "ricomuh/bauto-framework": "dev-master@dev"
   }
 }

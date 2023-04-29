@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26fe0bdd9385a610a486dde8dd899ef2",
+    "content-hash": "f0861b8802a0ccca59f2992364642ea5",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -151,19 +151,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ricomuh/bauto-framework.git",
-                "reference": "282260c1e3f8b345e135d4d86cd01ef9387956fd"
+                "reference": "56ed2c6c8a3bbc94c848062194b95125d4d9c5a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ricomuh/bauto-framework/zipball/282260c1e3f8b345e135d4d86cd01ef9387956fd",
-                "reference": "282260c1e3f8b345e135d4d86cd01ef9387956fd",
+                "url": "https://api.github.com/repos/ricomuh/bauto-framework/zipball/56ed2c6c8a3bbc94c848062194b95125d4d9c5a2",
+                "reference": "56ed2c6c8a3bbc94c848062194b95125d4d9c5a2",
                 "shasum": ""
             },
             "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
-                    "engine/Helper/helpers.php"
+                    "engine/Helper/helpers.php",
+                    "engine/Handler/helpers.php",
+                    "engine/Frontend/helpers.php"
                 ],
                 "psr-4": {
                     "Engine\\": "engine/"
@@ -185,7 +187,7 @@
                 "issues": "https://github.com/ricomuh/bauto-framework/issues",
                 "source": "https://github.com/ricomuh/bauto-framework/tree/master"
             },
-            "time": "2023-04-29T02:14:02+00:00"
+            "time": "2023-04-29T05:20:03+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
