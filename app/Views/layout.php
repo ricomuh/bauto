@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $this->yield('title', 'Aplikasi Rico') ?></title>
+    <title><?= $this->yield('title', 'Bauto Framework') ?></title>
     <?= google_fonts([
         'Poppins' =>
         ['as' => 'h1', 'weight' => [400, 700], 'italic' => true],
@@ -16,13 +16,13 @@
 
 <body>
     <header>
-        <h1><?= $e->yield('title', 'Aplikasi Rico') ?></h1>
+        <h1><?= $e->yield('title', 'Bauto Framework') ?></h1>
     </header>
     <main>
         <?= $e->yield('content') ?>
     </main>
     <footer>
-        Copyrigth <?= date('Y') ?> - Aplikasi Rico
+        Copyrigth &copy; <?= date('Y') ?> - Bauto Framework
     </footer>
     <?= $e->yield('scripts') ?>
 </body>
