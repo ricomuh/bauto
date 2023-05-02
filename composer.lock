@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0861b8802a0ccca59f2992364642ea5",
+    "content-hash": "da8c5ebeb655320653e1e7010865a2cb",
     "packages": [
         {
             "name": "fakerphp/faker",
@@ -718,13 +718,63 @@
                 }
             ],
             "time": "2022-10-16T01:01:54+00:00"
+        },
+        {
+            "name": "xantios/mimey",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Xantios/mimey.git",
+                "reference": "beeecdc96faba3ffa75c105fcc3697b54a5edfd6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Xantios/mimey/zipball/beeecdc96faba3ffa75c105fcc3697b54a5edfd6",
+                "reference": "beeecdc96faba3ffa75c105fcc3697b54a5edfd6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpunit/phpunit": "^9.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mimey\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Xantios Krugor",
+                    "email": "git@xantios.nl"
+                },
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "PHP package for converting file extensions to MIME types and vice versa.",
+            "support": {
+                "issues": "https://github.com/Xantios/mimey/issues",
+                "source": "https://github.com/Xantios/mimey/tree/develop"
+            },
+            "time": "2021-06-12T14:31:46+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ricomuh/bauto-framework": 20
+        "ricomuh/bauto-framework": 20,
+        "xantios/mimey": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

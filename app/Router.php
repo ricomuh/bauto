@@ -18,5 +18,6 @@ class Router extends RouterKernel
     public function application(Route $route)
     {
         $route->get('/', HomeController::class, 'index')->name('home');
+        $route->get('/intro/:name', HomeController::class, 'intro')->name('intro');
     }
 }
