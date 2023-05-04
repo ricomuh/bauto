@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da8c5ebeb655320653e1e7010865a2cb",
+    "content-hash": "e1016a671264a11556b75628dc8f3986",
     "packages": [
         {
             "name": "fakerphp/faker",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "da0dad13b0d8432918b1453cc763e04d7364d739"
+                "reference": "cd773f417ded084059c010bc672c35c242b7bdc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/da0dad13b0d8432918b1453cc763e04d7364d739",
-                "reference": "da0dad13b0d8432918b1453cc763e04d7364d739",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/cd773f417ded084059c010bc672c35c242b7bdc6",
+                "reference": "cd773f417ded084059c010bc672c35c242b7bdc6",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +73,7 @@
                 "issues": "https://github.com/FakerPHP/Faker/issues",
                 "source": "https://github.com/FakerPHP/Faker/tree/main"
             },
-            "time": "2023-04-27T18:33:17+00:00"
+            "time": "2023-05-02T08:04:15+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -274,12 +274,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ricomuh/bauto-framework.git",
-                "reference": "1c09771f91bfd3f6aa1fc3e5508cc35a788df2f8"
+                "reference": "82f609533092877c337cbca26407fb3599b9ec7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ricomuh/bauto-framework/zipball/1c09771f91bfd3f6aa1fc3e5508cc35a788df2f8",
-                "reference": "1c09771f91bfd3f6aa1fc3e5508cc35a788df2f8",
+                "url": "https://api.github.com/repos/ricomuh/bauto-framework/zipball/82f609533092877c337cbca26407fb3599b9ec7f",
+                "reference": "82f609533092877c337cbca26407fb3599b9ec7f",
                 "shasum": ""
             },
             "require": {
@@ -313,7 +313,7 @@
                 "issues": "https://github.com/ricomuh/bauto-framework/issues",
                 "source": "https://github.com/ricomuh/bauto-framework/tree/master"
             },
-            "time": "2023-04-30T16:41:59+00:00"
+            "time": "2023-05-04T13:49:16+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
